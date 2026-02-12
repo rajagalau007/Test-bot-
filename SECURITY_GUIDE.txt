@@ -1,0 +1,362 @@
+NFT MINTING SECURITY GUIDE
+==========================
+
+⚠️ CRITICAL SECURITY PRINCIPLES ⚠️
+===================================
+
+This guide explains how to safely mint NFTs and avoid common scams.
+
+
+RULE #1: NEVER SHARE YOUR PRIVATE KEY
+======================================
+
+Your private key (or seed phrase) is like the password to your bank account.
+ANYONE with your private key can steal ALL your crypto and NFTs.
+
+NEVER:
+❌ Share your private key with anyone
+❌ Type it into any website
+❌ Send it via email, Telegram, Discord, etc.
+❌ Store it in a file on your computer
+❌ Take a screenshot of it
+❌ Share it with "support" (scammers impersonate support)
+❌ Store it in a bot or automated system
+
+LEGITIMATE WEBSITES NEVER ASK FOR YOUR PRIVATE KEY!
+
+
+RULE #2: USE A BURNER WALLET FOR NEW MINTS
+===========================================
+
+A "burner wallet" is a separate wallet with limited funds that you use
+for new, unverified NFT projects.
+
+Why?
+- If the project is a scam, you only lose what's in that wallet
+- Malicious contracts can't drain your main wallet
+- Limits exposure to new/unknown smart contracts
+
+How to create a burner wallet:
+1. Create a new MetaMask account (or other wallet)
+2. Only transfer what you're willing to lose
+3. Use this wallet ONLY for new NFT mints
+4. Transfer valuable NFTs to your main wallet later
+
+
+RULE #3: VERIFY SMART CONTRACTS
+================================
+
+Before minting, ALWAYS verify the smart contract:
+
+On Ethereum:
+1. Go to Etherscan.io
+2. Paste the contract address
+3. Check:
+   □ Contract is verified (green checkmark)
+   □ Recent activity (transactions in last 24 hours)
+   □ Number of holders (more = better)
+   □ Comments section for warnings
+   □ Source code if you can read Solidity
+
+On Polygon:
+- Use PolygonScan.com
+
+On Solana:
+- Use Solscan.io or SolanaFM.com
+
+RED FLAGS:
+🚩 Unverified contract
+🚩 No recent transactions
+🚩 Very few holders
+🚩 Warnings in comments
+🚩 Contract allows unlimited minting
+🚩 Contract has pause/blacklist functions
+
+
+RULE #4: VERIFY THE PROJECT IS REAL
+====================================
+
+Check official social media:
+
+Twitter:
+□ Verified checkmark (blue badge)
+□ Consistent posting history
+□ Engagement from real accounts (not bots)
+□ Team members have real profiles
+□ Links match the mint website
+
+Discord:
+□ Active community
+□ Clear roadmap
+□ Team is responsive
+□ No excessive hype or promises
+□ Check #announcements for official mint link
+
+Website:
+□ Professional design
+□ Clear team information
+□ Realistic roadmap
+□ Working links
+□ No typos or grammar errors
+□ HTTPS (secure connection)
+
+RED FLAGS:
+🚩 Anonymous team
+🚩 Unrealistic promises ("guaranteed 100x returns")
+🚩 Pressure to mint quickly ("only 10 minutes left!")
+🚩 Copied artwork from other projects
+🚩 No clear utility or roadmap
+🚩 Asking for private keys or seed phrases
+
+
+RULE #5: CHECK THE MINT WEBSITE URL
+====================================
+
+Scammers create fake websites that look identical to real ones.
+
+ALWAYS verify:
+□ URL matches official Twitter/Discord announcements
+□ HTTPS (padlock icon in browser)
+□ No typos in domain name (opensae.io vs opensea.io)
+□ Bookmark the official site to avoid phishing
+
+Common scam tactics:
+- Homoglyph attacks (using similar-looking characters)
+- Extra characters (opensea-nft.io instead of opensea.io)
+- Different TLD (.com vs .io vs .xyz)
+- Subdomain tricks (opensea.scammer.com)
+
+ALWAYS cross-reference the URL with official sources!
+
+
+RULE #6: UNDERSTAND GAS FEES
+=============================
+
+Minting an NFT requires paying "gas fees" to the blockchain.
+
+Before confirming:
+□ Check current gas prices (use Etherscan Gas Tracker)
+□ Understand you'll pay gas even if the NFT is "free"
+□ Gas fees can range from $5 to $500+ depending on network
+□ Failed transactions still cost gas
+□ You can adjust gas to save money (but may fail)
+
+Tip: Mint during off-peak hours (nights/weekends) for lower gas.
+
+
+RULE #7: WALLET SECURITY BASICS
+================================
+
+Hardware Wallets (Recommended):
+- Ledger or Trezor
+- Private keys never leave the device
+- Most secure option for valuable holdings
+
+Software Wallets:
+- MetaMask, Phantom, etc.
+- Convenient but less secure
+- Good for burner wallets
+
+Security tips:
+□ Use a strong password
+□ Enable 2FA where available
+□ Keep software updated
+□ Use a password manager
+□ Never use public WiFi for transactions
+□ Don't install unknown browser extensions
+□ Clear cache/cookies regularly
+
+
+RULE #8: RECOGNIZE COMMON SCAMS
+================================
+
+Fake Airdrops:
+- "You won a free NFT! Click here!"
+- Links to malicious contracts that drain wallets
+
+Phishing:
+- Fake emails from "OpenSea" or "MetaMask"
+- Links to fake websites that steal credentials
+
+Rug Pulls:
+- Team mints, takes money, and disappears
+- Website goes offline after mint
+
+Pump and Dump:
+- Artificial hype to inflate prices
+- Team sells, price crashes
+
+Discord/Telegram Scams:
+- Fake support agents (always scammers)
+- Fake "mint now" announcements
+- Impersonation of team members
+
+
+RULE #9: TRANSACTION APPROVAL SAFETY
+=====================================
+
+When minting or buying:
+
+BEFORE CLICKING "CONFIRM":
+□ Verify the contract address
+□ Check the gas fee is reasonable
+□ Confirm the transaction details
+□ Make sure you're on the correct network
+□ Double-check the recipient address
+
+MetaMask shows:
+- Contract interaction
+- Gas fee
+- Total cost
+- Network
+
+If anything looks wrong, REJECT the transaction!
+
+
+RULE #10: POST-MINT SECURITY
+=============================
+
+After successfully minting:
+
+Immediate actions:
+□ Verify the NFT appears in your wallet
+□ Screenshot transaction hash
+□ Check NFT on OpenSea/marketplace
+□ Transfer to secure wallet if valuable
+
+Ongoing security:
+□ Revoke unnecessary contract approvals (use Revoke.cash)
+□ Monitor wallet activity
+□ Keep private keys secure
+□ Don't share wallet address unnecessarily
+□ Be wary of unsolicited NFTs (could be scams)
+
+
+SPECIFIC PLATFORM SAFETY
+=========================
+
+OpenSea:
+- Look for verified collections (blue checkmark)
+- Check collection stats (volume, floor price, holders)
+- Read collection description
+- Review creator's profile
+- Check activity feed for suspicious patterns
+
+Magic Eden:
+- Verify collection on official launchpad
+- Check social media links
+- Review creator verification status
+- Look at community engagement
+- Check recent sales activity
+
+Twitter:
+- Only trust verified accounts
+- Check thread for community feedback
+- Look for verified contract addresses
+- Be wary of DMs (always scams)
+- Verify links before clicking
+
+
+WHAT TO DO IF SCAMMED
+======================
+
+If you think you've been scammed:
+
+Immediate actions:
+1. STOP interacting with the contract
+2. Revoke all approvals (Revoke.cash)
+3. Transfer remaining assets to new wallet
+4. Document everything (screenshots, transaction hashes)
+5. Report to platform (OpenSea, Magic Eden, etc.)
+6. Report to local authorities if significant loss
+
+Prevention for next time:
+- Review what went wrong
+- Learn from the experience
+- Implement stricter security measures
+- Don't chase losses with risky mints
+
+
+DAILY SECURITY CHECKLIST
+=========================
+
+Before any NFT mint:
+□ Verify contract on block explorer
+□ Confirm project social media
+□ Check community feedback
+□ Use burner wallet
+□ Verify website URL
+□ Understand gas fees
+□ Read transaction details carefully
+□ Have funds you can afford to lose
+□ Trust your instincts (if it feels wrong, skip it)
+
+
+RED FLAG CHECKLIST
+==================
+
+Skip the mint if you see ANY of these:
+
+🚩 Team asks for private key or seed phrase
+🚩 Unrealistic promises or guaranteed returns
+🚩 Excessive urgency or FOMO tactics
+🚩 Unverified smart contract
+🚩 Anonymous team with no credentials
+🚩 Copied artwork or suspicious roadmap
+🚩 Website/Discord link doesn't match official
+🚩 Very low social media engagement
+🚩 Negative community feedback
+🚩 Contract has suspicious permissions
+🚩 Project appeared overnight with no history
+🚩 Team members have fake/new accounts
+
+
+RESOURCES FOR SAFE MINTING
+===========================
+
+Block Explorers:
+- Ethereum: etherscan.io
+- Polygon: polygonscan.com
+- Solana: solscan.io
+- Arbitrum: arbiscan.io
+
+Contract Approval Management:
+- revoke.cash (Ethereum/EVM chains)
+- approved.zone (Solana)
+
+Gas Fee Trackers:
+- Etherscan Gas Tracker
+- Gas Station Network
+
+NFT Research:
+- Nansen.ai (premium analytics)
+- CoinGecko (NFT data)
+- DappRadar (NFT rankings)
+
+Education:
+- Ethereum.org (learn about blockchain)
+- Cryptozombies (learn smart contracts)
+- Binance Academy (crypto education)
+
+
+FINAL REMINDER
+==============
+
+The NFT Monitor bot is designed to HELP you find opportunities,
+but YOU are responsible for:
+✓ Verifying each opportunity
+✓ Securing your wallets
+✓ Making informed decisions
+✓ Understanding the risks
+
+This bot will NEVER:
+❌ Ask for your private key
+❌ Automatically mint NFTs
+❌ Execute transactions
+❌ Connect to your wallet
+
+If someone claiming to be from this bot asks for sensitive
+information, it's a SCAM.
+
+
+Stay safe, stay secure, and happy minting! 🔒

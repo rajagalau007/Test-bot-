@@ -1,0 +1,411 @@
+╔═══════════════════════════════════════════════════════════╗
+║                                                           ║
+║   PANDUAN TERMUX - INSTALASI LENGKAP & MUDAH             ║
+║   Unified Bot: NFT + Degen + Telegram Control            ║
+║                                                           ║
+╚═══════════════════════════════════════════════════════════╝
+
+
+🎯 PANDUAN INI UNTUK TERMUX (ANDROID)
+=======================================
+
+Bot bisa jalan 24/7 di HP Android kamu!
+
+
+📱 STEP 1: INSTALL TERMUX
+==========================
+
+⚠️ PENTING: Install dari F-Droid, BUKAN Play Store!
+
+1. Download F-Droid:
+   https://f-droid.org/F-Droid.apk
+
+2. Install F-Droid
+
+3. Buka F-Droid, cari "Termux"
+
+4. Install Termux dari F-Droid
+
+5. Buka Termux
+
+✅ Termux siap!
+
+
+📥 STEP 2: DOWNLOAD BOT FILES
+==============================
+
+Di Termux, ketik perintah ini satu per satu:
+
+# Update Termux
+pkg update && pkg upgrade -y
+
+# Install tools
+pkg install wget unzip -y
+
+# Buat folder
+cd ~
+mkdir crypto-bot
+cd crypto-bot
+
+# Download bot files (ganti URL dengan link download kamu)
+# Jika dapat link download:
+wget [LINK-DOWNLOAD-BOT.zip]
+unzip *.zip
+
+# ATAU copy files manual:
+# 1. Download files di HP
+# 2. Pindahkan ke: /sdcard/Download/
+# 3. Di Termux:
+termux-setup-storage
+cp /sdcard/Download/bot-files/* ~/crypto-bot/
+
+✅ Files ready!
+
+
+🔧 STEP 3: SETUP TELEGRAM BOT
+==============================
+
+Sekarang buat bot Telegram:
+
+A. Buat Bot:
+   1. Buka Telegram
+   2. Cari: @BotFather
+   3. Kirim: /newbot
+   4. Ikuti instruksi
+   5. SIMPAN TOKEN yang diberikan!
+      (format: 123456789:ABCdef...)
+
+B. Dapatkan Chat ID:
+   1. Cari: @userinfobot
+   2. Kirim: /start
+   3. SIMPAN ID yang muncul!
+      (format: 123456789)
+
+✅ Telegram ready!
+
+
+⚙️ STEP 4: INSTALL & CONFIGURE
+================================
+
+Di Termux, masih di folder ~/crypto-bot:
+
+# Make script executable
+chmod +x setup_termux.sh
+
+# Run setup
+./setup_termux.sh
+
+Script akan:
+1. Install Python & dependencies
+2. Minta TOKEN (dari step 3A)
+3. Minta CHAT_ID (dari step 3B)
+4. Buat file .env otomatis
+5. Test koneksi Telegram
+
+✅ Setup selesai!
+
+
+🚀 STEP 5: JALANKAN BOT
+========================
+
+Ada 2 cara:
+
+CARA 1: TELEGRAM CONTROL (RECOMMENDED)
+---------------------------------------
+Control bot lewat Telegram!
+
+Di Termux:
+cd ~/crypto-bot
+python telegram_control.py &
+
+Sekarang di Telegram, kirim ke bot kamu:
+/help - Lihat commands
+/start - Start bot
+/status - Check status
+/stop - Stop bot
+
+✅ Bot jalan, control via Telegram!
+
+
+CARA 2: DIRECT RUN
+------------------
+Jalankan langsung:
+
+cd ~/crypto-bot
+python unified_bot.py &
+
+✅ Bot jalan di background!
+
+
+📱 TELEGRAM CONTROL COMMANDS
+=============================
+
+Kirim ke bot Telegram kamu:
+
+/start - Start unified bot (NFT + Degen)
+/start_nft - Start NFT monitor only
+/start_degen - Start degen hunter only
+/stop - Stop bot
+/restart - Restart bot
+/status - Check bot status & uptime
+/config - View configuration
+/help - Show help
+
+Atau kirim tanpa /:
+"start" - Start bot
+"stop" - Stop bot
+"status" - Check status
+
+
+🔍 TROUBLESHOOTING
+==================
+
+❌ Error: "No such file or directory"
+Solusi:
+  cd ~/crypto-bot
+  ls -la
+  # Pastikan files ada (unified_bot.py, dll)
+  # Jika tidak ada, download ulang files
+
+❌ Error: "Module not found"
+Solusi:
+  pip install requests python-dotenv psutil --upgrade
+
+❌ Bot tidak kirim alerts
+Solusi:
+  # Check bot running:
+  ps aux | grep python
+  
+  # Check config:
+  cat .env
+  
+  # Test Telegram:
+  python test_connection.py
+
+❌ Bot berhenti saat Termux ditutup
+Solusi:
+  # Gunakan termux-wake-lock:
+  termux-wake-lock
+  python telegram_control.py &
+  
+  # Atau gunakan nohup:
+  nohup python telegram_control.py > bot.log 2>&1 &
+
+❌ Battery drain
+Solusi:
+  # Bot sudah optimized
+  # Tapi tetap charge saat running lama
+  # Atau adjust interval di .env:
+  NFT_CHECK_INTERVAL=10
+  DEGEN_CHECK_INTERVAL=5
+
+
+💡 TIPS TERMUX
+===============
+
+1. PREVENT SLEEP:
+   termux-wake-lock
+   (Bot tetap jalan walau screen off)
+
+2. BACKGROUND MODE:
+   python telegram_control.py &
+   (& = background)
+
+3. CHECK RUNNING:
+   ps aux | grep python
+   (Lihat process running)
+
+4. VIEW LOGS:
+   tail -f bot.log
+   (Lihat log real-time)
+
+5. STOP BACKGROUND:
+   pkill -f telegram_control
+   (Stop semua bot)
+
+6. AUTO-START:
+   # Buat script startup
+   echo "cd ~/crypto-bot && python telegram_control.py &" > ~/start_bot.sh
+   chmod +x ~/start_bot.sh
+   # Jalankan: ./start_bot.sh
+
+
+⚙️ CUSTOMIZE SETTINGS
+======================
+
+Edit file .env:
+
+cd ~/crypto-bot
+nano .env
+
+Setting penting:
+
+# Enable/Disable
+ENABLE_NFT=true          # true/false
+ENABLE_DEGEN=true        # true/false
+
+# Interval (menit)
+NFT_CHECK_INTERVAL=5     # Cek NFT tiap 5 menit
+DEGEN_CHECK_INTERVAL=3   # Cek degen tiap 3 menit
+
+# Minimum Score
+MIN_PUMP_SCORE=50        # NFT: 50=good, 70=best
+MIN_DEGEN_SCORE=60       # Degen: 60=medium risk, 70=lower risk
+
+Save: Ctrl+X, Y, Enter
+
+Restart bot untuk apply changes:
+Di Telegram: /restart
+
+
+📊 MONITORING & LOGS
+====================
+
+CHECK STATUS:
+  Di Telegram: /status
+  Atau: ps aux | grep python
+
+VIEW LOGS:
+  tail -f bot.log
+  (Ctrl+C untuk keluar)
+
+MEMORY USAGE:
+  free -m
+  (Lihat RAM usage)
+
+PROCESS INFO:
+  top
+  (Lihat semua process)
+
+
+🔒 KEAMANAN
+============
+
+✅ Bot AMAN karena:
+  - Tidak simpan private key
+  - Tidak auto-trade
+  - Read-only monitoring
+  - Alerts only
+
+⚠️ KAMU HARUS:
+  - DYOR before trading
+  - Verify contracts
+  - Use stop loss
+  - Small positions
+
+
+🎯 WORKFLOW LENGKAP
+====================
+
+1. SETUP (Sekali):
+   - Install Termux (F-Droid)
+   - Download bot files
+   - Run setup_termux.sh
+   - Masukkan TOKEN & CHAT_ID
+
+2. START BOT:
+   - cd ~/crypto-bot
+   - python telegram_control.py &
+   - Di Telegram: /start
+
+3. MONITORING:
+   - Dapat alerts di Telegram
+   - Control via Telegram commands
+   - Check /status kapan saja
+
+4. DAILY USE:
+   - Bot jalan 24/7
+   - Alerts otomatis
+   - Control lewat Telegram
+   - DYOR before trading!
+
+
+📂 STRUKTUR FILES
+==================
+
+~/crypto-bot/
+├── .env                      ← Configuration
+├── telegram_control.py       ← Control bot (JALANKAN INI)
+├── unified_bot.py           ← Main bot
+├── nft_monitor_enhanced.py  ← NFT monitor
+├── degen_hunter.py          ← Degen hunter
+├── setup_termux.sh          ← Setup script
+└── *.txt                    ← Documentation
+
+
+🎉 QUICK START SUMMARY
+=======================
+
+1. Install Termux (F-Droid)
+2. Download bot files
+3. cd ~/crypto-bot
+4. chmod +x setup_termux.sh
+5. ./setup_termux.sh
+6. python telegram_control.py &
+7. Di Telegram: /start
+
+SELESAI! Bot jalan 24/7! 🚀
+
+
+💬 CONTOH PENGGUNAAN
+=====================
+
+# Start di Termux
+cd ~/crypto-bot
+termux-wake-lock
+python telegram_control.py &
+
+# Control via Telegram
+[Telegram] /start
+[Bot] ✅ Bot started successfully!
+
+[Telegram] /status  
+[Bot] 🟢 Bot Status: RUNNING
+      Uptime: 2h 15m
+      Memory: 45.3 MB
+
+[Telegram] /config
+[Bot] ⚙️ Current Configuration
+      NFT: true
+      DEGEN: true
+      ...
+
+# Dapat alerts otomatis
+[Bot] 🎨 FREE MINT ALERT - 🚀🚀🚀
+      Project: Amazing NFT
+      ...
+
+[Bot] 💎 NEW DEGEN COIN - 🚀🚀
+      Token: $MOON
+      ...
+
+
+═══════════════════════════════════════════════════════════
+
+KESIMPULAN:
+
+✅ Install Termux (F-Droid)
+✅ Download bot files
+✅ Setup via script
+✅ Control via Telegram
+✅ Bot jalan 24/7 di HP!
+
+SUPER MUDAH! 🎉
+
+═══════════════════════════════════════════════════════════
+
+🆘 NEED HELP?
+
+Check:
+- SECURITY_GUIDE.txt (keamanan)
+- PANDUAN_UNIFIED_BOT.txt (strategi)
+- README_INDONESIA.txt (overview)
+
+═══════════════════════════════════════════════════════════
+
+SELAMAT HUNTING NFT & DEGEN COINS! 💎🚀
+
+Bot jalan di Termux, control via Telegram,
+monitor 24/7, dapat alerts real-time!
+
+═══════════════════════════════════════════════════════════

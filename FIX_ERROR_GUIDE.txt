@@ -1,0 +1,349 @@
+╔═══════════════════════════════════════════════════════════╗
+║                                                           ║
+║   🔧 FIX ERROR "No such file or directory" 🔧           ║
+║   + Cara Jalankan Bot Lewat Telegram                     ║
+║                                                           ║
+╚═══════════════════════════════════════════════════════════╝
+
+
+❌ ERROR YANG KAMU ALAMI:
+==========================
+
+python unified_bot.py
+/data/data/com.termux/files/usr/bin/python: 
+can't open file '/data/data/com.termux/files/home/downloads/unified_bot.py': 
+[Errno 2] No such file or directory
+
+
+🔍 PENYEBAB:
+============
+
+1. File bot tidak ada di folder yang benar
+2. Kamu ada di folder ~/downloads tapi files di tempat lain
+3. Files belum di-extract atau belum di-copy
+
+
+✅ SOLUSI LENGKAP:
+===================
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+SOLUSI 1: SETUP ULANG DI FOLDER YANG BENAR
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Di Termux, ketik perintah ini satu per satu:
+
+# 1. Buat folder baru di home directory
+cd ~
+mkdir -p crypto-bot
+cd crypto-bot
+
+# 2. Copy semua bot files ke sini
+# Jika files ada di Downloads:
+termux-setup-storage
+cp -r /sdcard/Download/nft-monitor/* .
+
+# ATAU jika file ZIP:
+cp /sdcard/Download/bot-files.zip .
+unzip bot-files.zip
+
+# 3. Verify files ada
+ls -la
+
+# Kamu harus lihat files ini:
+# - unified_bot.py
+# - nft_monitor_enhanced.py
+# - degen_hunter.py
+# - telegram_control.py
+# - .env atau config.env.template
+
+# 4. Jika ada config.env.template, copy ke .env:
+cp config.env.template .env
+
+# 5. Edit .env (masukkan TOKEN & CHAT_ID):
+nano .env
+
+# Edit bagian ini:
+# TELEGRAM_BOT_TOKEN=your_token_here
+# TELEGRAM_CHAT_ID=your_chat_id_here
+
+# Save: Ctrl+X, Y, Enter
+
+# 6. Install dependencies:
+pip install requests python-dotenv psutil --upgrade
+
+# 7. Test:
+python test_telegram.py
+
+# 8. Sekarang jalankan!
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+SOLUSI 2: QUICK AUTO SETUP
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Jika ada file install_all.sh:
+
+cd ~/crypto-bot
+chmod +x install_all.sh
+./install_all.sh
+
+Script akan setup semuanya otomatis!
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+CARA TERBAIK: TELEGRAM CONTROL BOT
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+TIDAK PERLU jalankan unified_bot.py langsung!
+Gunakan Telegram Control Bot untuk kontrol!
+
+
+🚀 SETUP TELEGRAM CONTROL:
+===========================
+
+1. Pastikan files ready di ~/crypto-bot
+   cd ~/crypto-bot
+   ls
+   # Harus ada: telegram_control.py
+
+2. Jalankan Control Bot:
+   python telegram_control.py &
+
+3. Control via Telegram:
+   Buka Telegram, kirim ke bot kamu:
+   /help - Lihat semua commands
+   /start - Start unified bot
+   /status - Check status
+   /stop - Stop bot
+
+
+📱 TELEGRAM CONTROL COMMANDS:
+==============================
+
+Kirim ke bot Telegram kamu:
+
+🟢 START BOT:
+/start                  Start unified bot (NFT + Degen)
+/start_nft             Start NFT monitor only  
+/start_degen           Start degen hunter only
+
+🔴 STOP BOT:
+/stop                   Stop bot
+/restart                Restart bot
+
+📊 INFO:
+/status                 Check bot status & uptime
+/config                 View configuration
+/help                   Show all commands
+
+💡 SHORTCUT:
+Atau kirim tanpa slash:
+"start" = /start
+"stop" = /stop
+"status" = /status
+
+
+🎯 WORKFLOW LENGKAP:
+====================
+
+SETUP (Sekali saja):
+--------------------
+1. cd ~/crypto-bot
+2. Pastikan semua files ada
+3. Edit .env (TOKEN & CHAT_ID)
+4. pip install requests python-dotenv psutil
+
+JALANKAN:
+---------
+1. cd ~/crypto-bot
+2. termux-wake-lock (prevent sleep)
+3. python telegram_control.py &
+
+CONTROL:
+--------
+1. Buka Telegram
+2. Chat dengan bot kamu
+3. Kirim: /start
+4. Bot akan mulai monitor!
+
+MONITORING:
+-----------
+• Bot kirim alerts otomatis
+• Control via Telegram
+• Check /status kapan saja
+
+
+📂 STRUKTUR FILES YANG BENAR:
+==============================
+
+~/crypto-bot/              ← INSTALL DI SINI!
+├── .env                   ← Config (TOKEN & CHAT_ID)
+├── telegram_control.py    ← Control bot (JALANKAN INI!)
+├── unified_bot.py         ← Main bot
+├── nft_monitor_enhanced.py
+├── degen_hunter.py
+└── test_telegram.py
+
+
+🔍 TROUBLESHOOTING:
+===================
+
+Q: "No such file or directory"
+A: cd ~/crypto-bot
+   ls -la
+   Pastikan files ada!
+
+Q: "Module not found"  
+A: pip install requests python-dotenv psutil --upgrade
+
+Q: Bot tidak kirim alert
+A: # Check running:
+   ps aux | grep python
+   
+   # Check config:
+   cat .env
+   
+   # Restart:
+   Di Telegram: /restart
+
+Q: Control bot tidak respond
+A: # Check telegram_control.py running:
+   ps aux | grep telegram_control
+   
+   # Restart:
+   pkill -f telegram_control
+   python telegram_control.py &
+
+Q: Files tidak ada
+A: # Download ulang
+   # Extract ke ~/crypto-bot
+   # Jangan di ~/downloads!
+
+
+💡 TIPS PENTING:
+================
+
+1. SELALU install di ~/crypto-bot
+   JANGAN di ~/downloads!
+
+2. Gunakan telegram_control.py
+   BUKAN unified_bot.py langsung!
+
+3. Background mode:
+   python telegram_control.py &
+   (& = background)
+
+4. Prevent sleep:
+   termux-wake-lock
+
+5. Check always:
+   pwd
+   (pastikan di ~/crypto-bot)
+
+
+🎮 CONTOH LENGKAP:
+==================
+
+# Terminal 1: Setup
+cd ~
+mkdir crypto-bot
+cd crypto-bot
+
+# Copy files ke sini
+# ...
+
+# Edit config
+nano .env
+# Add TOKEN & CHAT_ID
+
+# Install deps
+pip install requests python-dotenv psutil
+
+# Run control bot
+termux-wake-lock
+python telegram_control.py &
+
+# Terminal 2: Telegram App
+[Buka Telegram]
+[Chat dengan bot kamu]
+
+You: /start
+Bot: ✅ Bot started successfully!
+     Mode: unified
+     PID: 12345
+
+You: /status
+Bot: 🟢 Bot Status: RUNNING
+     Uptime: 5m
+     Memory: 45 MB
+     ...
+
+You: /config
+Bot: ⚙️ Current Configuration
+     NFT: true
+     DEGEN: true
+     ...
+
+# Dapat alerts otomatis
+Bot: 🎨 FREE MINT ALERT
+     Project: Amazing NFT
+     ...
+
+Bot: 💎 NEW DEGEN COIN
+     Token: $MOON
+     ...
+
+
+══════════════════════════════════════════════════════════
+
+🎯 KESIMPULAN:
+
+ERROR FIXED dengan:
+✅ Install di ~/crypto-bot (bukan ~/downloads)
+✅ Verify semua files ada
+✅ Edit .env dengan TOKEN & CHAT_ID
+✅ Jalankan telegram_control.py (bukan unified_bot.py)
+✅ Control via Telegram commands!
+
+══════════════════════════════════════════════════════════
+
+🚀 QUICK START:
+
+cd ~/crypto-bot
+python telegram_control.py &
+
+Lalu di Telegram:
+/start
+
+DONE! 🎉
+
+══════════════════════════════════════════════════════════
+
+📞 MASIH ERROR?
+
+1. Verify path:
+   pwd
+   (harus: /data/data/com.termux/files/home/crypto-bot)
+
+2. Verify files:
+   ls -la
+   (harus ada: telegram_control.py, unified_bot.py, dll)
+
+3. Verify config:
+   cat .env
+   (harus ada: TOKEN & CHAT_ID)
+
+4. Test Telegram:
+   python test_telegram.py
+
+5. Reinstall deps:
+   pip install --upgrade requests python-dotenv psutil
+
+══════════════════════════════════════════════════════════
+
+GOOD LUCK! Bot will work! 🚀💎
+
+Control everything via Telegram - Super easy!
+
+══════════════════════════════════════════════════════════
